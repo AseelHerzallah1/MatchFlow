@@ -4,8 +4,6 @@
 
 I paste or auto-collect jobs, MatchFlow scores each one against my real CV (plus GitHub), logs everything in **Notion**, and only pings me when the fit is **≥ 80** — with a cover letter ready to send. Along the way I practiced **workflow automation** (n8n), **API design** (FastAPI), and **structured AI** (OpenAI + Pydantic).
 
-> Separate from **[AseelIndex](https://github.com/AseelHerzallah1)** (portfolio RAG chatbot). AseelIndex *talks* to recruiters; MatchFlow *acts* on opportunities.
-
 ---
 
 ## How it works
