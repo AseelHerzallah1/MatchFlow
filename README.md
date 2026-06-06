@@ -4,8 +4,6 @@
 
 MatchFlow collects jobs (RSS + Telegram), analyzes them with AI against your CV, logs everything in **Notion**, and sends **instant alerts with a cover letter** when the match score is **≥ 80**.
 
-> Separate from **[AseelIndex](https://github.com/)** (portfolio RAG chatbot). AseelIndex *talks* to recruiters; MatchFlow *acts* on opportunities.
-
 ---
 
 ## Quest coverage
