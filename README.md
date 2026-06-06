@@ -4,6 +4,8 @@
 
 MatchFlow collects jobs (RSS + Telegram), analyzes them with AI against your CV, logs everything in **Notion**, and sends **instant alerts with a cover letter** when the match score is **≥ 80**.
 
+> Separate from **[AseelIndex](https://github.com/AseelHerzallah1)** (portfolio RAG chatbot). AseelIndex *talks* to recruiters; MatchFlow *acts* on opportunities.
+
 ---
 
 ## Quest coverage
@@ -48,7 +50,7 @@ python telegram_bot/bot.py
 
 ### 4. n8n (automatic trigger)
 
-Import `n8n/workflows/matchflow-main.json` — see [n8n/workflows/README.md](n8n/workflows/README.md).
+Import `n8n/workflows/matchflow-main.json` — see [n8n/workflows/README.md](n8n/workflows/README.md) and [n8n setup](docs/N8N_SETUP.md).
 
 ---
 
@@ -59,9 +61,9 @@ PLACE-IL-Quest/
 ├── brain/              # FastAPI "Brain" API
 ├── telegram_bot/       # Manual job intake
 ├── cv/                 # Your CV (markdown)
-├── n8n/workflows/      # Visual automation for judges
-├── docs/               # Architecture, demo script, checklist
-└── scripts/            # run_brain.ps1
+├── n8n/workflows/      # Visual automation
+├── docs/               # Architecture & setup
+└── scripts/            # run_brain.ps1, test helpers
 ```
 
 ---
@@ -69,18 +71,7 @@ PLACE-IL-Quest/
 ## Docs
 
 - [Architecture & Notion schema](docs/ARCHITECTURE.md)
-- [2-minute demo script](docs/DEMO_SCRIPT.md)
-- [Submission checklist](docs/SUBMISSION_CHECKLIST.md)
-
----
-
-## Winning tips
-
-1. **Record a crisp demo** following `docs/DEMO_SCRIPT.md`.
-2. **Use your real CV** — scores and cover letters become believable.
-3. **Show the n8n canvas** — judges expect Make/n8n/Zapier fluency.
-4. **Bilingual UX** — Hebrew + English in Telegram and summaries.
-5. **Honest scoring** — mention gaps; it reads as engineering, not marketing.
+- [n8n setup](docs/N8N_SETUP.md)
 
 ---
 

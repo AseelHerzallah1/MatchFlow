@@ -14,3 +14,8 @@ Thumbs.db
 .vscode/
 *.log
 n8n/.credentials/
+
+# Local-only notes (not for public repo)
+docs/DEMO_SCRIPT.md
+docs/SUBMISSION_CHECKLIST.md
+docs/REFERALLY.md

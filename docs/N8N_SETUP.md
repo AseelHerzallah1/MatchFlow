@@ -176,12 +176,10 @@ Runs one RSS item through Brain from PowerShell.
 
 ---
 
-## Demo video checklist
+## What to show in a demo
 
-See `docs/DEMO_SCRIPT.md` — show:
-
-1. Telegram manual trigger (you already have this ✅)
+1. Telegram manual trigger — paste a job, get score + Notion row
 2. n8n canvas with 3 phases (sticky notes)
-3. Manual execution → Executions log
+3. Manual execution → **Executions** log
 4. Notion row with **Source: Rss**
-5. High-match row with cover letter (≥ 80)
+5. High-match row with cover letter (score ≥ 80)
