@@ -1,8 +1,6 @@
 # MatchFlow — Architecture
 
-**MatchFlow** is an automated job-hunting pipeline built for [Place-IL Quest #2](https://www.place-il.org). It separates cleanly from **AseelIndex** (portfolio RAG chatbot): AseelIndex answers recruiters; MatchFlow *finds, scores, and acts on* roles.
-
-## What makes this submission stand out
+**MatchFlow** is an automated job-hunting pipeline built for [Place-IL Quest #2](https://www.place-il.org). 
 
 | Judge criterion | MatchFlow answer |
 |-----------------|------------------|
