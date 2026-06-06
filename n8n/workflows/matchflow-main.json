@@ -1,0 +1,214 @@
+{
+  "name": "MatchFlow — RSS → Brain → Notion",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "a1b2c3d4-manual-0001",
+      "name": "▶ Manual (demo)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [-200, 120]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [{ "field": "hours", "hoursInterval": 6 }]
+        }
+      },
+      "id": "a1b2c3d4-sched-0001",
+      "name": "Every 6 hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [-200, -80]
+    },
+    {
+      "parameters": {
+        "mode": "manual",
+        "duplicateItem": false,
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cfg-rss",
+              "name": "rssUrl",
+              "value": "https://remoteok.com/remote-junior-jobs.rss",
+              "type": "string"
+            },
+            {
+              "id": "cfg-brain",
+              "name": "brainUrl",
+              "value": "http://127.0.0.1:8001",
+              "type": "string"
+            },
+            {
+              "id": "cfg-key",
+              "name": "brainApiKey",
+              "value": "PASTE_YOUR_BRAIN_API_KEY_HERE",
+              "type": "string"
+            },
+            {
+              "id": "cfg-limit",
+              "name": "jobsPerRun",
+              "value": 10,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-set-0001",
+      "name": "⚙️ Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [40, 20]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.rssUrl }}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-rss-0001",
+      "name": "RSS Job Feed",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [260, 20]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const text = (\n  ($json.title || '') + ' ' +\n  ($json.contentSnippet || $json.content || $json.description || '')\n).toLowerCase();\n\nconst junior = [\n  'junior', 'entry level', 'entry-level', 'intern', 'graduate',\n  'student', '0+', '0-2', '1-2', 'new grad', 'early career', 'no experience',\n  'engineer i', 'engineer 1', 'associate engineer', 'college grad'\n];\nconst dev = [\n  'software', 'developer', 'engineer', 'full stack', 'full-stack',\n  'frontend', 'front end', 'front-end', 'backend', 'back-end',\n  'devops', 'programmer', 'swe', 'react', 'node', 'python',\n  'javascript', 'typescript', 'java', '.net', 'qa engineer'\n];\nconst senior = [\n  'senior', 'staff engineer', 'principal', 'lead engineer',\n  '5+ years', '6+ years', '7+ years', '8+ years', '10+ years',\n  'founding engineer', 'head of', 'director', 'architect', 'manager'\n];\n\nif (senior.some((k) => text.includes(k))) return;\nconst isJunior = junior.some((k) => text.includes(k));\nconst isDev = dev.some((k) => text.includes(k));\nif (isJunior && isDev) return $input.item;\nreturn;"
+      },
+      "id": "a1b2c3d4-code-0001",
+      "name": "Junior/Entry filter",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [370, 20]
+    },
+    {
+      "parameters": {
+        "maxItems": "={{ $('⚙️ Config').first().json.jobsPerRun }}",
+        "keep": "firstItems"
+      },
+      "id": "a1b2c3d4-limit-0001",
+      "name": "Top N jobs",
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [480, 20]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $('⚙️ Config').first().json.brainUrl }}/api/v1/pipeline",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-API-Key",
+              "value": "={{ $('⚙️ Config').first().json.brainApiKey }}"
+            },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"job_text\": {{ JSON.stringify($json.contentSnippet || $json.content || $json.description || $json.title || '') }},\n  \"job_url\": {{ JSON.stringify($json.link || $json.guid || '') }},\n  \"source\": \"rss\"\n}",
+        "options": { "timeout": 180000 }
+      },
+      "id": "a1b2c3d4-http-0001",
+      "name": "MatchFlow Brain",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [700, 20]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "high-match",
+              "leftValue": "={{ $json.analysis.match.score }}",
+              "rightValue": 80,
+              "operator": { "type": "number", "operation": "gte" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-if-0001",
+      "name": "Score >= 80?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [700, 20]
+    },
+    {
+      "parameters": {
+        "content": "## Phase 01 — Trigger\nRSS + Manual demo\n\n**⚙️ Config:** brainApiKey, rssUrl, jobsPerRun (default 10)\nSort Notion by Match Score to see best fits",
+        "height": 200,
+        "width": 340,
+        "color": 4
+      },
+      "id": "note-01",
+      "name": "Phase 01",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-220, -280]
+    },
+    {
+      "parameters": {
+        "content": "## Phase 02 — Brain\nHTTP → `/api/v1/pipeline`\nOpenAI scores job vs CV + GitHub",
+        "height": 120,
+        "width": 280,
+        "color": 5
+      },
+      "id": "note-02",
+      "name": "Phase 02",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [460, -160]
+    },
+    {
+      "parameters": {
+        "content": "## Phase 03 — Action\nBrain writes Notion + alerts if ≥80\nIF node = visual proof for judges",
+        "height": 120,
+        "width": 280,
+        "color": 6
+      },
+      "id": "note-03",
+      "name": "Phase 03",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [680, -160]
+    }
+  ],
+  "connections": {
+    "▶ Manual (demo)": {
+      "main": [[{ "node": "⚙️ Config", "type": "main", "index": 0 }]]
+    },
+    "Every 6 hours": {
+      "main": [[{ "node": "⚙️ Config", "type": "main", "index": 0 }]]
+    },
+    "⚙️ Config": {
+      "main": [[{ "node": "RSS Job Feed", "type": "main", "index": 0 }]]
+    },
+    "RSS Job Feed": {
+      "main": [[{ "node": "Junior/Entry filter", "type": "main", "index": 0 }]]
+    },
+    "Junior/Entry filter": {
+      "main": [[{ "node": "Top N jobs", "type": "main", "index": 0 }]]
+    },
+    "Top N jobs": {
+      "main": [[{ "node": "MatchFlow Brain", "type": "main", "index": 0 }]]
+    },
+    "MatchFlow Brain": {
+      "main": [[{ "node": "Score >= 80?", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": { "executionOrder": "v1" },
+  "meta": { "templateCredsSetupCompleted": true },
+  "tags": [{ "name": "Place-IL" }, { "name": "Quest-2" }]
+}

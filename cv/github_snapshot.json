@@ -1,0 +1,58 @@
+[
+  {
+    "name": "my-fullstack-chatbot",
+    "description": "",
+    "url": "https://github.com/AseelHerzallah1/my-fullstack-chatbot",
+    "languages": {
+      "JavaScript": 34853,
+      "CSS": 2666
+    }
+  },
+  {
+    "name": "streamlit-genai-chatbot",
+    "description": "Generative AI chatbot built with Streamlit, LangChain, and Groq. Chat in your browser with conversation memory powered by Llama 3.3.",
+    "url": "https://github.com/AseelHerzallah1/streamlit-genai-chatbot",
+    "languages": {
+      "Python": 1349
+    }
+  },
+  {
+    "name": "twitter-clone",
+    "description": "🐦 A full-stack Twitter clone built with the MERN stack, featuring authentication, social interactions, and cloud-based media handling.",
+    "url": "https://github.com/AseelHerzallah1/twitter-clone",
+    "languages": {
+      "JavaScript": 92255,
+      "CSS": 2949,
+      "HTML": 539
+    }
+  },
+  {
+    "name": "Product-store",
+    "description": "🛒 MERN stack product store — built for personal full-stack learning. Create, update & delete products with Chakra UI v3, Zustand, and dark mode. Live at https://product-store-qzbn.onrender.com/",
+    "url": "https://github.com/AseelHerzallah1/Product-store",
+    "languages": {
+      "JavaScript": 23280,
+      "HTML": 360
+    }
+  },
+  {
+    "name": "Camera-Pose-Estimation-Project",
+    "description": "AI project on camera pose estimation using deep learning and synthetic 3D-rendered data. Built a CNN trained on thousands of generated images to predict camera orientation. Achieved 97% validation accuracy with optimized dataset sampling. Applications in AR/VR, robotics, and 3D reconstruction.",
+    "url": "https://github.com/AseelHerzallah1/Camera-Pose-Estimation-Project",
+    "languages": {
+      "Python": 11999
+    }
+  },
+  {
+    "name": "Operating-Systems---BGU",
+    "description": "Projects for the Operating Systems course at BGU, based on the xv6-riscv teaching OS. Includes implementing system calls, process management, scheduling, synchronization (Peterson locks, tournament tree), virtual memory, shared memory, and a multi-process logging system in C.",
+    "url": "https://github.com/AseelHerzallah1/Operating-Systems---BGU",
+    "languages": {}
+  },
+  {
+    "name": "System-Programming-SPL-Projects-BGU",
+    "description": "Projects for the System Programming course at BGU. Hands-on C++ and Java assignments covering runtime environments (Unix, JVM), concurrency, memory management, OOP, and sockets. From server-client communication to game logic and system design, each project emphasizes practical application and efficient programming practices.",
+    "url": "https://github.com/AseelHerzallah1/System-Programming-SPL-Projects-BGU",
+    "languages": {}
+  }
+]
