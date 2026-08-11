@@ -84,9 +84,9 @@ Click the **⚙️ Config** node and set:
 
 | Field | Value |
 |-------|--------|
-| `rssUrl` | `https://remoteok.com/remote-junior-jobs.rss` (default — junior dev roles) |
-| `brainUrl` | `http://127.0.0.1:8001` |
-| `brainApiKey` | Your `BRAIN_API_KEY` from `.env` (same value as Telegram uses) |
+| `rssUrl` | WeWorkRemotely full-stack RSS (or another junior-friendly feed) |
+| `brainUrl` | `https://matchflow-tgvm.onrender.com` (live Brain — not localhost) |
+| `brainApiKey` | Your `BRAIN_API_KEY` from `.env` (same value as Telegram / Render) |
 
 **Save** the workflow (Ctrl+S).
 
