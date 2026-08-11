@@ -81,7 +81,14 @@ def full_pipeline(
         job_url=body.job_url,
         source=body.source,
     )
-    out: dict = {"analysis": result.model_dump(), "notion": None, "alerts": None}
+    out: dict = {
+        "analysis": result.model_dump(),
+        "notion": None,
+        "alerts": None,
+        "token_usage": (
+            result.token_usage.model_dump() if result.token_usage else None
+        ),
+    }
 
     if persist_notion and result.match.score < notion_min_score:
         out["notion_skipped"] = (

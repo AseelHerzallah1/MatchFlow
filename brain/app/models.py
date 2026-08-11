@@ -43,6 +43,17 @@ class CoverLetter(BaseModel):
     body_he: str
 
 
+class TokenUsage(BaseModel):
+    """OpenAI token accounting for one analyze/pipeline run."""
+
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
+    total_tokens: int = 0
+    calls: int = 0
+    cover_letter_generated: bool = False
+    estimated_cost_usd: float = 0.0
+
+
 class AnalyzeResponse(BaseModel):
     entities: JobEntities
     match: MatchResult
@@ -52,6 +63,7 @@ class AnalyzeResponse(BaseModel):
     job_url: str | None = None
     source: JobSource
     dedupe_key: str | None = None
+    token_usage: TokenUsage | None = None
 
 
 class HealthResponse(BaseModel):
