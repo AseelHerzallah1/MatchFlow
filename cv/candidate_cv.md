@@ -2,7 +2,7 @@
 
 **Junior Software Engineer** · Israel  
 **Email:** herzalla001@gmail.com · **Phone:** 0506099891  
-**GitHub:** https://github.com/AseelHerzallah1 · **LinkedIn:** (profile) · **Portfolio:** https://github.com/AseelHerzallah1/aseel-portfolio
+**GitHub:** https://github.com/AseelHerzallah1 · **LinkedIn:** https://www.linkedin.com/in/aseel-herzallah-290015319/ · **Portfolio:** https://github.com/AseelHerzallah1/aseel-portfolio
 
 ---
 
