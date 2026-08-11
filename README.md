@@ -1,16 +1,12 @@
 # MatchFlow
 
-**Live Brain API:** [https://matchflow-tgvm.onrender.com](https://matchflow-tgvm.onrender.com)  
-**Health check:** [https://matchflow-tgvm.onrender.com/health](https://matchflow-tgvm.onrender.com/health)  
-**Interactive docs:** [https://matchflow-tgvm.onrender.com/docs](https://matchflow-tgvm.onrender.com/docs)
-
 **My personal job-search copilot** — built to help me hunt entry-level SWE roles without drowning in irrelevant postings.
 
 I paste or auto-collect jobs, MatchFlow scores each one against my real CV (plus GitHub), logs everything in **Notion**, and only pings me when the fit is **≥ 80** — with a cover letter ready to send. Along the way I practiced **workflow automation** (n8n), **API design** (FastAPI), and **structured AI** (OpenAI + Pydantic).
 
 > Separate from **[AseelIndex](https://github.com/AseelHerzallah1)** (portfolio RAG chatbot). AseelIndex *talks* to recruiters; MatchFlow *acts* on opportunities.
 
-n8n and Telegram use the Render URL above (`MATCHFLOW_BRAIN_URL` / Config `brainUrl`). Free-tier Render may sleep when idle — first request can take ~30s.
+**Brain API (live):** https://matchflow-tgvm.onrender.com · [health](https://matchflow-tgvm.onrender.com/health) · [docs](https://matchflow-tgvm.onrender.com/docs)
 
 ---
 
@@ -19,7 +15,7 @@ n8n and Telegram use the Render URL above (`MATCHFLOW_BRAIN_URL` / Config `brain
 | Phase | What | Implementation |
 |-------|------|----------------|
 | **01 Trigger** | Auto + manual intake | n8n RSS + Telegram bot |
-| **02 Brain** | Extract entities + 1–100 score | FastAPI + OpenAI structured output (hosted on Render) |
+| **02 Brain** | Extract entities + 1–100 score | FastAPI + OpenAI structured output (Render) |
 | **03 Action** | CRM + smart alerts | Notion + Telegram when ≥ 80 |
 
 ---
@@ -31,19 +27,11 @@ n8n and Telegram use the Render URL above (`MATCHFLOW_BRAIN_URL` / Config `brain
 ```powershell
 cd PLACE-IL-Quest
 copy .env.example .env
-# Edit .env — OPENAI_API_KEY, BRAIN_API_KEY, Notion, Telegram, etc.
+# Edit .env — OPENAI_API_KEY, BRAIN_API_KEY, Notion, Telegram
 # MATCHFLOW_BRAIN_URL=https://matchflow-tgvm.onrender.com
-# Paste / update your CV in cv/candidate_cv.md
 ```
 
-### 2. Use the live Brain (recommended)
-
-No need to run uvicorn locally if Render is up:
-
-- Health: https://matchflow-tgvm.onrender.com/health  
-- Swagger: https://matchflow-tgvm.onrender.com/docs — `POST /api/v1/analyze` with header `X-API-Key`
-
-### 3. Telegram bot (manual trigger)
+### 2. Telegram bot (manual trigger)
 
 ```powershell
 python -m venv .venv
@@ -52,29 +40,16 @@ pip install -r telegram_bot/requirements.txt
 python telegram_bot/bot.py
 ```
 
-Set `MATCHFLOW_BRAIN_URL=https://matchflow-tgvm.onrender.com` in `.env` so the bot calls Render.
+The bot calls the live Brain on Render (see `MATCHFLOW_BRAIN_URL` in `.env`).
 
-### 4. n8n (automatic RSS)
+### 3. n8n (automatic RSS)
 
-1. `n8n start` → http://localhost:5678  
+1. `n8n start` → open the editor  
 2. Import `n8n/workflows/matchflow-main.json`  
-3. **⚙️ Config:**  
-   - `brainUrl` = `https://matchflow-tgvm.onrender.com`  
-   - `brainApiKey` = your `BRAIN_API_KEY`  
-   - `rssUrl` = WeWorkRemotely full-stack feed (or your preferred junior-friendly RSS)  
+3. **⚙️ Config:** `brainUrl` = `https://matchflow-tgvm.onrender.com`, plus your `brainApiKey`  
 4. **Publish** the workflow  
 
 See [n8n setup](docs/N8N_SETUP.md).
-
-### Optional — run Brain locally
-
-```powershell
-pip install -r brain/requirements.txt
-$env:PYTHONPATH = (Get-Location).Path
-python -m uvicorn brain.app.main:app --port 8001 --reload
-```
-
-Then temporarily set `MATCHFLOW_BRAIN_URL=http://127.0.0.1:8001`.
 
 ---
 
@@ -82,7 +57,7 @@ Then temporarily set `MATCHFLOW_BRAIN_URL=http://127.0.0.1:8001`.
 
 ```
 MatchFlow/
-├── brain/              # FastAPI Brain API (also deployed on Render)
+├── brain/              # FastAPI Brain API (deployed on Render)
 ├── telegram_bot/       # Manual job intake
 ├── cv/                 # CV + GitHub enrichment
 ├── n8n/workflows/      # Automation export
