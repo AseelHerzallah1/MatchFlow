@@ -21,6 +21,20 @@ def verify_api_key(x_api_key: str | None = Header(default=None)) -> None:
         raise HTTPException(status_code=401, detail="Invalid or missing X-API-Key")
 
 
+@app.get("/")
+def root() -> dict:
+    """Friendly landing page so the Render URL is not a bare 404."""
+    return {
+        "service": "MatchFlow Brain",
+        "status": "ok",
+        "health": "/health",
+        "docs": "/docs",
+        "analyze": "POST /api/v1/analyze",
+        "pipeline": "POST /api/v1/pipeline",
+        "repo": "https://github.com/AseelHerzallah1/MatchFlow",
+    }
+
+
 @app.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
     return HealthResponse(

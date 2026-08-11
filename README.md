@@ -1,20 +1,16 @@
 # MatchFlow
 
+**Live Brain API:** [https://matchflow-tgvm.onrender.com](https://matchflow-tgvm.onrender.com)  
+**Health check:** [https://matchflow-tgvm.onrender.com/health](https://matchflow-tgvm.onrender.com/health)  
+**Interactive docs:** [https://matchflow-tgvm.onrender.com/docs](https://matchflow-tgvm.onrender.com/docs)
+
 **My personal job-search copilot** — built to help me hunt entry-level SWE roles without drowning in irrelevant postings.
 
 I paste or auto-collect jobs, MatchFlow scores each one against my real CV (plus GitHub), logs everything in **Notion**, and only pings me when the fit is **≥ 80** — with a cover letter ready to send. Along the way I practiced **workflow automation** (n8n), **API design** (FastAPI), and **structured AI** (OpenAI + Pydantic).
 
----
+> Separate from **[AseelIndex](https://github.com/AseelHerzallah1)** (portfolio RAG chatbot). AseelIndex *talks* to recruiters; MatchFlow *acts* on opportunities.
 
-## Live deployment
-
-| Service | URL |
-|---------|-----|
-| **Brain API (Render)** | https://matchflow-tgvm.onrender.com |
-| **Health** | https://matchflow-tgvm.onrender.com/health |
-| **API docs** | https://matchflow-tgvm.onrender.com/docs |
-
-n8n and Telegram should point at the Render URL (`MATCHFLOW_BRAIN_URL` / Config `brainUrl`), not localhost — so the pipeline runs even when your laptop is off (Brain sleeps on free-tier idle; first request may take ~30s).
+n8n and Telegram use the Render URL above (`MATCHFLOW_BRAIN_URL` / Config `brainUrl`). Free-tier Render may sleep when idle — first request can take ~30s.
 
 ---
 
