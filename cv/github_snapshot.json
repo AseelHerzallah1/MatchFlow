@@ -1,5 +1,94 @@
 [
   {
+    "name": "llm-gateway",
+    "description": "OpenAI-compatible LLM gateway with streaming, semantic cache, multi-provider routing, observability, and optional PII redaction.",
+    "url": "https://github.com/AseelHerzallah1/llm-gateway",
+    "languages": {
+      "Python": 277367,
+      "HTML": 8518,
+      "Mako": 650,
+      "Dockerfile": 346
+    }
+  },
+  {
+    "name": "PlaceUp-Compass-Quest3",
+    "description": "Place-IL Quest #3: PlaceUp cold-start destination prediction (Compass Data Challenge)",
+    "url": "https://github.com/AseelHerzallah1/PlaceUp-Compass-Quest3",
+    "languages": {
+      "Jupyter Notebook": 905995
+    }
+  },
+  {
+    "name": "Scheme-Compiler-in-OCaml",
+    "description": "",
+    "url": "https://github.com/AseelHerzallah1/Scheme-Compiler-in-OCaml",
+    "languages": {
+      "Assembly": 50827,
+      "Scheme": 24959,
+      "OCaml": 23890,
+      "Makefile": 1356
+    }
+  },
+  {
+    "name": "Aseels-workspace",
+    "description": "",
+    "url": "https://github.com/AseelHerzallah1/Aseels-workspace",
+    "languages": {
+      "JavaScript": 124264,
+      "Python": 19675,
+      "CSS": 8512
+    }
+  },
+  {
+    "name": "twitter-clone",
+    "description": "Classic Twitter clone with timelines, reposts, DMs, Nest AI, and profiles — MERN stack, live on Vercel + Render.",
+    "url": "https://github.com/AseelHerzallah1/twitter-clone",
+    "languages": {
+      "JavaScript": 281023,
+      "CSS": 1558,
+      "HTML": 559
+    }
+  },
+  {
+    "name": "aseel-portfolio",
+    "description": "",
+    "url": "https://github.com/AseelHerzallah1/aseel-portfolio",
+    "languages": {
+      "TypeScript": 45506,
+      "CSS": 2520,
+      "JavaScript": 559
+    }
+  },
+  {
+    "name": "AseelHerzallah1",
+    "description": "",
+    "url": "https://github.com/AseelHerzallah1/AseelHerzallah1",
+    "languages": {}
+  },
+  {
+    "name": "Operating-Systems---BGU",
+    "description": "Projects for the Operating Systems course at BGU, based on the xv6-riscv teaching OS. Includes implementing system calls, process management, scheduling, synchronization (Peterson locks, tournament tree), virtual memory, shared memory, and a multi-process logging system in C.",
+    "url": "https://github.com/AseelHerzallah1/Operating-Systems---BGU",
+    "languages": {
+      "C": 726201,
+      "Assembly": 25836,
+      "Makefile": 14302,
+      "Linker Script": 4380,
+      "Dockerfile": 2553,
+      "Perl": 2174,
+      "Emacs Lisp": 258
+    }
+  },
+  {
+    "name": "MatchFlow",
+    "description": "Personal job-search pipeline: RSS + Telegram intake, AI scoring vs my CV, Notion CRM, alerts + cover letters at strong matches. n8n, FastAPI, OpenAI.",
+    "url": "https://github.com/AseelHerzallah1/MatchFlow",
+    "languages": {
+      "Python": 30858,
+      "PowerShell": 2732
+    }
+  },
+  {
     "name": "my-fullstack-chatbot",
     "description": "",
     "url": "https://github.com/AseelHerzallah1/my-fullstack-chatbot",
@@ -14,16 +103,6 @@
     "url": "https://github.com/AseelHerzallah1/streamlit-genai-chatbot",
     "languages": {
       "Python": 1349
-    }
-  },
-  {
-    "name": "twitter-clone",
-    "description": "🐦 A full-stack Twitter clone built with the MERN stack, featuring authentication, social interactions, and cloud-based media handling.",
-    "url": "https://github.com/AseelHerzallah1/twitter-clone",
-    "languages": {
-      "JavaScript": 92255,
-      "CSS": 2949,
-      "HTML": 539
     }
   },
   {
@@ -44,15 +123,14 @@
     }
   },
   {
-    "name": "Operating-Systems---BGU",
-    "description": "Projects for the Operating Systems course at BGU, based on the xv6-riscv teaching OS. Includes implementing system calls, process management, scheduling, synchronization (Peterson locks, tournament tree), virtual memory, shared memory, and a multi-process logging system in C.",
-    "url": "https://github.com/AseelHerzallah1/Operating-Systems---BGU",
-    "languages": {}
-  },
-  {
     "name": "System-Programming-SPL-Projects-BGU",
     "description": "Projects for the System Programming course at BGU. Hands-on C++ and Java assignments covering runtime environments (Unix, JVM), concurrency, memory management, OOP, and sockets. From server-client communication to game logic and system design, each project emphasizes practical application and efficient programming practices.",
     "url": "https://github.com/AseelHerzallah1/System-Programming-SPL-Projects-BGU",
-    "languages": {}
+    "languages": {
+      "Java": 150755,
+      "C++": 63073,
+      "Makefile": 1546,
+      "Shell": 958
+    }
   }
 ]

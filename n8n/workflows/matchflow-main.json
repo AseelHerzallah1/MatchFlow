@@ -30,13 +30,13 @@
             {
               "id": "cfg-rss",
               "name": "rssUrl",
-              "value": "https://remoteok.com/remote-junior-jobs.rss",
+              "value": "https://weworkremotely.com/categories/remote-full-stack-programming-jobs.rss",
               "type": "string"
             },
             {
               "id": "cfg-brain",
               "name": "brainUrl",
-              "value": "http://127.0.0.1:8001",
+              "value": "https://matchflow-tgvm.onrender.com",
               "type": "string"
             },
             {

@@ -8,7 +8,7 @@
 
 ## About
 
-Junior Software Engineer with a strong foundation in software development and problem-solving. Experienced in **Java**, **Python**, **C/C++**, and full-stack technologies (**React**, **TypeScript**, **Node.js**, **Express**, **MongoDB**). Solid **frontend** skills (HTML, CSS, responsive UI, component-based React). Knowledge in **generative AI** — LLMs, **RAG**, **AI agents**, chatbots, **MCP**, and frameworks (**LangChain**, **LlamaIndex**, **CrewAI**, **PydanticAI**) — with hands-on projects. Background spans AI/ML, backend systems, web development, and **operating systems (xv6)**. Seeking an **entry-level software engineering role**.
+Junior Software Engineer with a strong foundation in software development and problem-solving. Experienced in **Java**, **Python**, **C/C++**, **OCaml**, and full-stack technologies (**React**, **TypeScript**, **Node.js**, **Express**, **MongoDB**). Solid **frontend** skills (HTML, CSS, responsive UI, component-based React). Hands-on **generative AI** and **LLM infrastructure** — gateways, **RAG**, agents, chatbots, **MCP**, and frameworks (**LangChain**, **LlamaIndex**, **CrewAI**, **PydanticAI**). Background spans AI/ML, backend systems, data pipelines, web development, compilers, and **operating systems (xv6)**. **Place-IL Quest #2 winner** (MatchFlow). Seeking an **entry-level software engineering role**.
 
 ---
 
@@ -27,6 +27,41 @@ Generative AI foundations, LLMs, **RAG** (retrieval-augmented generation), **AI 
 ---
 
 ## Projects
+
+### LLM Gateway (2026)
+
+OpenAI-compatible **LLM gateway** with streaming responses, **semantic cache**, multi-provider routing, observability, and optional PII redaction. Production-style backend for serving and managing LLM calls.
+
+**Tech:** Python, FastAPI patterns, Docker, HTML/Mako templates, API design  
+**Repo:** https://github.com/AseelHerzallah1/llm-gateway
+
+### MatchFlow — Job Search Automation (2026) · Place-IL Quest #2 🏆
+
+Personal job-search pipeline: **RSS + Telegram** intake, AI scoring vs CV + **GitHub portfolio**, **Notion CRM**, alerts and cover letters at strong matches. Winner of Place-IL **Automation Maestro** quest.
+
+**Tech:** FastAPI, OpenAI structured output, n8n, Notion API, Telegram, GitHub API  
+**Repo:** https://github.com/AseelHerzallah1/MatchFlow · **Live Brain:** https://matchflow-tgvm.onrender.com
+
+### PlaceUp Compass — Cold-Start Prediction (2026) · Place-IL Quest #3
+
+Data challenge for **PlaceUp**: cold-start **destination prediction** using Compass-style travel data. Exploratory analysis, feature engineering, and modeling in a competition pipeline.
+
+**Tech:** Python, Jupyter Notebook, pandas, scikit-learn, data pipelines  
+**Repo:** https://github.com/AseelHerzallah1/PlaceUp-Compass-Quest3
+
+### Scheme Compiler in OCaml (2026)
+
+Compiler project implementing a **Scheme** subset — lexing, parsing, and code generation with **OCaml**, producing **x86-64 assembly**.
+
+**Tech:** OCaml, Scheme, Assembly, Makefile, compilers  
+**Repo:** https://github.com/AseelHerzallah1/Scheme-Compiler-in-OCaml
+
+### Developer Portfolio (2026)
+
+Personal portfolio site showcasing projects and skills with modern **TypeScript** frontend.
+
+**Tech:** TypeScript, JavaScript, CSS, React  
+**Repo:** https://github.com/AseelHerzallah1/aseel-portfolio
 
 ### Full-Stack Twitter Clone (2026)
 
@@ -112,14 +147,16 @@ Extended xv6 virtual memory for **shared memory** and built a multi-process logg
 
 | Area | Skills |
 |------|--------|
-| **Languages** | Java (proficient), C/C++ (proficient), Python, JavaScript, **TypeScript** |
+| **Languages** | Java (proficient), C/C++ (proficient), Python, JavaScript, **TypeScript**, **OCaml**, Scheme |
 | **Frontend** | React, **HTML, CSS**, responsive UI, component architecture, Chakra UI, Zustand, client-side state |
-| **Web & full-stack** | Node.js, Express.js, MongoDB Atlas, REST APIs, full-stack deployment (Render) |
-| **Generative AI** | LLMs, **RAG**, **AI agents**, chatbots, **MCP**, LangChain, LlamaIndex, CrewAI, PydanticAI (Udemy + projects) |
-| **Core CS** | OOP, concurrency & multithreading, memory management (Rule of 5), client-server architecture, TCP/network protocols |
-| **Systems / OS** | xv6-riscv, system calls, process scheduling, Peterson locks, shared memory, atomic ops, QEMU |
+| **Web & full-stack** | Node.js, Express.js, MongoDB Atlas, REST APIs, full-stack deployment (Render, Vercel) |
+| **Generative AI & LLM** | LLMs, **RAG**, **AI agents**, chatbots, **MCP**, LLM gateways, LangChain, LlamaIndex, CrewAI, PydanticAI |
+| **Automation & tools** | n8n, FastAPI, Notion API, Telegram bots, GitHub API integration |
+| **Data / ML** | Jupyter, pandas, scikit-learn, TensorFlow/Keras, CNNs, computer vision |
+| **Core CS** | OOP, concurrency & multithreading, memory management (Rule of 5), client-server architecture, TCP/network protocols, **compilers** |
+| **Systems / OS** | xv6-riscv, system calls, process scheduling, Peterson locks, shared memory, atomic ops, QEMU, Assembly |
+| **DevOps** | Docker, Render deployment |
 | **Environments** | Linux, Windows |
-| **AI / ML** | TensorFlow/Keras, CNNs, computer vision (project-based) |
 
 ---
 
@@ -142,5 +179,5 @@ Extended xv6 virtual memory for **shared memory** and built a multi-process logg
 ## Role preferences
 
 - Entry-level / junior software engineer  
-- Full-stack, **frontend**, backend, or **generative AI** / AI-leaning roles  
+- Full-stack, **frontend**, backend, **LLM/AI infrastructure**, or **data/ML** roles  
 - Israel (Be'er Sheva / hybrid / remote)  

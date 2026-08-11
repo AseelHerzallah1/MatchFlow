@@ -51,6 +51,38 @@ def fetch_repos(username: str) -> list[dict]:
         return enriched
 
 
+def _matching_notes(repos: list[dict], skills: list[str]) -> str:
+    """Auto-generated hints for the LLM — derived from live repo data."""
+    names = {r["name"].lower() for r in repos}
+    lines: list[str] = []
+    lang_blob = ", ".join(skills).lower()
+
+    if any(k in lang_blob for k in ("javascript", "typescript", "html", "css")):
+        front = [r["name"] for r in repos if any(
+            x in (r.get("languages") or {}) for x in ("JavaScript", "TypeScript", "HTML", "CSS")
+        )][:4]
+        if front:
+            lines.append(f"- Frontend / web: {', '.join(front)}.")
+
+    if any(k in lang_blob for k in ("python",)) or any("genai" in n or "ai" in n for n in names):
+        ai = [r["name"] for r in repos if "ai" in r["name"].lower() or "genai" in r["name"].lower() or "camera" in r["name"].lower()][:4]
+        if ai:
+            lines.append(f"- AI / ML projects: {', '.join(ai)}.")
+
+    if any(k in lang_blob for k in ("c", "c++", "java")) or any("os" in n or "spl" in n or "scheme" in n for n in names):
+        sys_repos = [r["name"] for r in repos if any(
+            x in r["name"].lower() for x in ("os", "spl", "scheme", "operating", "system")
+        )][:4]
+        if sys_repos:
+            lines.append(f"- Systems / low-level: {', '.join(sys_repos)}.")
+
+    recent = [r["name"] for r in repos[:5]]
+    if recent:
+        lines.append(f"- Most recently updated repos: {', '.join(recent)}.")
+
+    return "\n".join(lines) if lines else "- See repository list above for demonstrated skills."
+
+
 def build_github_markdown(username: str, repos: list[dict]) -> str:
     all_langs: dict[str, int] = {}
     for repo in repos:
@@ -59,6 +91,7 @@ def build_github_markdown(username: str, repos: list[dict]) -> str:
 
     skills = sorted(all_langs, key=all_langs.get, reverse=True)
     repo_blocks = "\n".join(_format_repo(r) for r in repos)
+    notes = _matching_notes(repos, skills)
 
     return f"""# GitHub portfolio — @{username}
 Profile: https://github.com/{username}
@@ -70,11 +103,8 @@ Synced: {datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")}
 ## Repositories
 {repo_blocks}
 
-## Notes for matching
-- Frontend work includes **HTML, CSS, JavaScript** (twitter-clone, Product-store, my-fullstack-chatbot).
-- Full-stack MERN: React/Node/Express/MongoDB patterns in twitter-clone and Product-store.
-- AI/ML: Camera-Pose-Estimation-Project, streamlit-genai-chatbot.
-- Systems: Operating-Systems---BGU (C), System-Programming-SPL-Projects-BGU (Java, C++).
+## Notes for matching (auto-generated from live GitHub data)
+{notes}
 """
 
 
